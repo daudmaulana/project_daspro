@@ -15,7 +15,7 @@ print(banner)
 
 banner = f'''{Fore.YELLOW}{Style.BRIGHT}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 {Fore.YELLOW}{Style.BRIGHT}┃{Fore.MAGENTA}[💎] {Fore.GREEN}[Dev. By Salman Daud Maulana]                    {Fore.YELLOW}┃
-{Fore.YELLOW}{Style.BRIGHT}┃{Fore.MAGENTA}[💎] {Fore.CYAN}[Sup. By Bagus Willy Saputra                     {Fore.YELLOW}┃
+{Fore.YELLOW}{Style.BRIGHT}┃{Fore.MAGENTA}[💎] {Fore.CYAN}[Sup. By Bagus Willy Pratama                     {Fore.YELLOW}┃
 {Fore.YELLOW}{Style.BRIGHT}┃{Fore.MAGENTA}[💎] {Fore.CYAN}         Nayla Dwi Septiana]                     {Fore.YELLOW}┃
 {Fore.YELLOW}{Style.BRIGHT}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 {Fore.YELLOW}{Style.BRIGHT}┃{Fore.MAGENTA}[🤖] {Fore.RED}[PROGRAM PENGELOLAAN PERPUSTAKAAN] {Fore.RED}🔥            {Fore.YELLOW}┃
@@ -117,9 +117,9 @@ def daftarSewa():
         animasi(teks, 0.03, Fore.BLUE, Style.BRIGHT)
     return True
     
-def pengembalianSewa(nama):
+def pengembalianSewa(judul):
     for i in sewa:
-        if i[1] == nama :
+        if i[0] == judul :
             pengembalian = int(input(f'{Fore.YELLOW}[+] Buku di Kembalikan Pada Hari Ke : {Fore.RESET}'))
             if pengembalian > i[2]:
                 denda = 1000 * (pengembalian - i[2])
@@ -139,13 +139,13 @@ def pengembalianSewa(nama):
                     elif bayar > denda:
                         kembali = bayar - denda
                         ulangi = False
-                struk = f'''{Fore.MAGENTA}━━━━━━━━━━━━━━━━━━━━━━━━━━
+                struk = f'''
 {Fore.GREEN}Nama       : {nama}            
 {Fore.GREEN}Judul Buku : {judul}          
 {Fore.GREEN}Bayar      : {bayar}              
 {Fore.GREEN}Kembali    : {kembali}      
 {Fore.YELLOW}Buku Berhasil Dikembalikan
-{Fore.MAGENTA}━━━━━━━━━━━━━━━━━━━━━━━━━━'''
+'''
 
                 print(struk)
                 sewa.remove(i)
@@ -153,7 +153,7 @@ def pengembalianSewa(nama):
                 teks = 'Buku Berhasil Dikembalikan'
                 sewa.remove(i)
         else:
-            teks = 'Nama Tidak Ada Dalam Daftar Penyewa'
+            teks = 'Judul Tidak Ada Dalam Daftar Sewa'
             animasi(teks, 0.03, Fore.BLUE, Style.BRIGHT)
     
 banner = f'''\n{Fore.RED}{Style.BRIGHT}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -210,8 +210,8 @@ while True:
             teks = f'Saat Ini Tidak Ada Penyewa Buku'
             animasi(teks, 0.03, Fore.RED, Style.BRIGHT)
         else:
-            nama = input(f'{Fore.YELLOW}[+] Masukkan Nama Penyewa : {Fore.RESET}').capitalize()
-            pengembalianSewa(nama)
+            judul = input(f'{Fore.YELLOW}[+] Masukkan Judul Buku : {Fore.RESET}').capitalize()
+            pengembalianSewa(judul)
     elif pilih == '7':
         teks = f'Keluar dari Program'
         animasi(teks, 0.03, Fore.BLUE, Style.BRIGHT)
