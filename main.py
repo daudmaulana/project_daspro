@@ -1,6 +1,5 @@
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Style, init
 import module as m
-import time
 import os
 
 init(autoreset=True)
