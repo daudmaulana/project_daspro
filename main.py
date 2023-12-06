@@ -44,7 +44,10 @@ while True:
     pilih = input(f'{Fore.YELLOW}[#] Pilih Opsi : {Fore.RESET}')
 
     if pilih == '1':
-        m.tambahBuku()
+        judul = input(f'{Fore.YELLOW}[+] Masukkan Judul Buku : {Fore.RESET}').capitalize()
+        penulis = input(f'{Fore.YELLOW}[+] Masukkan Penulis Buku : {Fore.RESET}').capitalize()
+        terbit = input(f'{Fore.YELLOW}[+] Masukkan Tahun Terbit Buku : {Fore.RESET}')
+        m.tambahBuku(judul, penulis, terbit)
     elif pilih == '2':
         if not m.daftar_buku:
             teks = 'Tidak Ada Buku yang Tersedia'
@@ -65,8 +68,8 @@ while True:
             m.animasi(teks, 0.03, Fore.RED, Style.BRIGHT)
         else:
             m.lihatBuku()
-            nama = input(f'{Fore.YELLOW}[+] Masukkan Nama Penyewa : {Fore.RESET}').capitalize()
             judul = input(f'{Fore.YELLOW}[+] Masukkan Judul Buku yang Ingin Disewa : {Fore.RESET}').capitalize()
+            nama = input(f'{Fore.YELLOW}[+] Masukkan Nama Penyewa : {Fore.RESET}').capitalize()
             tenggat = int(input(f'{Fore.YELLOW}[+] Masukkan Berapa Hari Tenggat Pengembalian : {Fore.RESET}'))
             m.sewaBuku(judul, nama, tenggat)
     elif pilih == '5':

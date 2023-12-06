@@ -14,13 +14,9 @@ def animasi(teks, kecepatan, warna, style):
     print(Style.RESET_ALL)
 
 
-def tambahBuku():
+def tambahBuku(judul,penulis,terbit):
     global no
 
-    judul = input(f'{Fore.YELLOW}[+] Masukkan Judul Buku : {Fore.RESET}').capitalize()
-    penulis = input(f'{Fore.YELLOW}[+] Masukkan Penulis Buku : {Fore.RESET}').capitalize()
-    terbit = input(f'{Fore.YELLOW}[+] Masukkan Tahun Terbit Buku : {Fore.RESET}')
-        
     for i in daftar_buku:
             if i[1] == judul:
                 teks = f'Buku Berjudul {judul} Sudah Ada di Daftar'
@@ -68,24 +64,21 @@ def hapusBuku(judul):
     return True      
 
 def sewaBuku(judul, nama, tenggat):
-    ditemukan = False
     for i in sewa:
         if judul == i[0]:
             teks = f'Buku Berjudul {judul} Sudah Disewa Oleh {i[1]}'
             animasi(teks, 0.03, Fore.RED, Style.BRIGHT)
-            ditemukan = True
-            break
-        
-    if not ditemukan:
-        for i in daftar_buku:
-            if judul not in i[1]:
-                teks = f'Buku Tidak Ada Dalam Daftar'
-                animasi(teks, 0.03, Fore.RED, Style.BRIGHT)
-                break
-        else:
-            sewa.append([judul,nama,tenggat])
+            return True
+            
+    for i in daftar_buku:
+        if judul == i[1]:
+            sewa.append([judul, nama, tenggat])
             teks = f'Buku Berjudul {judul} Berhasil Disewa Oleh {nama} Dengan Tenggat {tenggat} Hari'
-            animasi(teks, 0.03, Fore.BLUE, Style.BRIGHT) 
+            animasi(teks, 0.03, Fore.BLUE, Style.BRIGHT)
+            return True
+            
+    teks = f'Buku Tidak Ada Dalam Daftar'
+    animasi(teks, 0.03, Fore.RED, Style.BRIGHT)           
     return True
 
 
