@@ -123,6 +123,7 @@ def pengembalianSewa(judul):
                 sewa.remove(i)
             else:
                 teks = 'Buku Berhasil Dikembalikan'
+                animasi(teks, 0.03, Fore.BLUE, Style.BRIGHT)
                 sewa.remove(i)
         else:
             teks = 'Judul Tidak Ada Dalam Daftar Sewa'
